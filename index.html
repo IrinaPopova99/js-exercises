@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
         <header>
@@ -75,9 +75,32 @@
                 </div>
                 <button class="more" id="sales-more-button">Узнать больше</button>
             </div>
-            
+            <div class="gallery">
+                <h2>Так выглядит наш суши-бар</h2>
+                <div class="slider">
+                    <div class="slide">
+                        <img src="img/1.jpg" alt="slider">
+                    </div>
+                    <div class="slide">
+                        <img src="img/2.jpg" alt="slider">
+                    </div>
+                    <div class="slide">
+                        <img src="img/3.jpg" alt="slider">
+                    </div>
+                    <div class="prev"><div class="left-arrow"><i class="fas fa-angle-left fa-5x "></i></div></div>
+					<div class="next"><div class="right-arrow"><i class="fas fa-angle-right fa-5x "></i></div></div>
+                </div>
+                <div class="dots">
+                    <div class="dot dot-active"></div>
+					<div class="dot"></div>
+					<div class="dot"></div>
+                </div>
+            </div>
         </main>
-        <script src="js/tabs.js"></script>
-        <script src="js/timer.js"></script>
+        <script src="https://kit.fontawesome.com/8295607d2b.js" crossorigin="anonymous"></script>
+        <script src="js/parts/tabs.js"></script>
+        <script src="js/parts/timer.js"></script>
+        <script src="js/style/fixed-header.js"></script>
+        <script src="js/parts/slider.js"></script>
     </body>
 </html>
