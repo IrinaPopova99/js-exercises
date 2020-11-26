@@ -65,13 +65,13 @@
             <div class="sales">
                 <h2>До конца акции осталось: </h2>
                 <div class="timer">
-                    <span id="dd">2</span>
+                    <span id="dd" class="timer-number">2</span>
                     <span>&nbsp;дн.&nbsp;</span>
-                    <span id="hh">18</span>
+                    <span id="hh" class="timer-number">18</span>
                     <span>:</span>
-                    <span id="mm">34</span>
+                    <span id="mm" class="timer-number">34</span>
                     <span>:</span>
-                    <span id="ss">22</span>
+                    <span id="ss" class="timer-number">22</span>
                 </div>
                 <button class="more" id="sales-more-button">Узнать больше</button>
             </div>
@@ -87,8 +87,8 @@
                     <div class="slide">
                         <img src="img/3.jpg" alt="slider">
                     </div>
-                    <div class="prev"><div class="left-arrow"><i class="fas fa-angle-left fa-5x "></i></div></div>
-					<div class="next"><div class="right-arrow"><i class="fas fa-angle-right fa-5x "></i></div></div>
+                    <div class="prev"><div class="left-arrow"><i class="fas fa-angle-left fa-5x " id="arrow"></i></div></div>
+					<div class="next"><div class="right-arrow"><i class="fas fa-angle-right fa-5x " id="arrow"></i></div></div>
                 </div>
                 <div class="dots">
                     <div class="dot dot-active"></div>
@@ -96,11 +96,21 @@
 					<div class="dot"></div>
                 </div>
             </div>
+            <div class="popup">
+                <div class="more-information">
+                    <div><h2>Закажите наши блюда и получите подарок!</h2></div>
+                    <div class="more-text">
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+                        Necessitatibus accusamus maiores sit repellendus quod minus!
+                    </div>
+                    <div><button class="button-link">РАСЧИТАТЬ</button></div>
+                    <div class="cross"><i class="fas fa-times fa-3x"></i></div>
+                </div>
+            </div>
+            
         </main>
         <script src="https://kit.fontawesome.com/8295607d2b.js" crossorigin="anonymous"></script>
-        <script src="js/parts/tabs.js"></script>
-        <script src="js/parts/timer.js"></script>
         <script src="js/style/fixed-header.js"></script>
-        <script src="js/parts/slider.js"></script>
+        <script src="../dist/js/bundle.js"></script>
     </body>
 </html>

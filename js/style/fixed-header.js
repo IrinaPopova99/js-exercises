@@ -1,5 +1,6 @@
 // let menu = document.querySelector('.menu'),
-let positionMenu = menu.offsetTop,
+let menu = document.querySelector('.menu'),
+    positionMenu = menu.offsetTop,
     bodyBlock = document.querySelector('body');
 
 window.addEventListener('scroll', function fixedHeader() {

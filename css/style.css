@@ -1,10 +1,22 @@
+@font-face {
+    font-family: 'Chinese';
+    src: url('/font/chinese.ttf');
+}
 body {
     margin: 0px;
-    font-family: "candara";
+    font-family: 'candara';
     font-size: 16pt;
+    overflow-x: hidden;
 }
 header { 
     margin-bottom: 60px;
+    font-family: 'Chinese';
+}
+h2 {
+    font-family: 'Chinese'
+}
+button {
+    font-family: 'Chinese'
 }
 .menu {
     display: flex;
@@ -16,6 +28,7 @@ header {
     width: 100%;
     top: 0px;
     background-color: rgb(172, 37, 37);
+    box-shadow: 0 3px 15px white;
 }
 .menu-fixed {
     position: fixed;
@@ -38,7 +51,7 @@ main, .cards {
 }
 .card {
     flex-direction:column;
-    max-width: 800px;
+    max-width: 1200px;
     max-height: 500px;
     border: 1px solid gray;
     margin-bottom: 60px;
@@ -52,8 +65,8 @@ h2 {
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgb(0, 0, 0);
     background-color: white;
-    /* width: 120px;*/
-    height: 60px; 
+    min-width: 250px;
+    height: 80px; 
     font-weight: bold;
     font-size: 18pt;
 }
@@ -79,9 +92,13 @@ h2 {
     font-size: 56pt;    
     margin: 30px;
 }
-/* .gallery {
-   
-} */
+.timer-number {
+    display: inline-block;
+    width: 55px;
+}
+.gallery {
+    margin-bottom: 60px;
+}
 .slider {
     position: relative;
     display: inline-block;
@@ -106,7 +123,7 @@ h2 {
 .prev:hover, .next:hover {
     opacity: 80%;
 }
-i {
+#arrow {
     color: rgb(0, 0, 0);
     opacity: 80%;
 }
@@ -136,3 +153,50 @@ i {
 .dot-active {
     background-color: black;
 }
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 4;
+    left: 50%;
+    top: 150px;
+    -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+            transform: translateX(-50%);
+}
+.more-information {
+    position: relative;
+    background-color: black;
+    color: white;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 100px;
+    padding-right: 100px;  
+    min-width: 1200px;
+    text-align: center;
+}
+.button-link {
+    background-color: white;
+    height: 80px; 
+    min-width: 250px;
+    font-weight: bolder;
+    color: rgb(172, 37, 37);
+    font-size: 22pt;
+    border: 0px;
+    box-shadow: 0 0 10px white;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    border-radius: 5px;
+}
+.cross {
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    cursor: pointer;
+}
+.animated {
+    transition-property: background-color;
+    transition-duration: 3s;
+  }
