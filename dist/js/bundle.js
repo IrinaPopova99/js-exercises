@@ -1,13 +1,51 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./js/parts/calc.js":
+/*!**************************!*\
+  !*** ./js/parts/calc.js ***!
+  \**************************/
+/*! unknown exports (runtime-defined) */
+/*! runtime requirements: module */
+/*! CommonJS bailout: module.exports is used directly at 27:0-14 */
+/***/ ((module) => {
+
+function calc() {
+    let countInput = document.querySelectorAll('.block-counter-input')[0],
+        resultInput = document.querySelectorAll('.block-counter-input')[1],
+        districtInput = document.querySelector('.district'),
+        result = 0;
+        console.log(districtInput.selectedIndex)
+    countInput.addEventListener('input', function() {
+        result = this.value * 10;
+        if (this.value == 0 || this.value == '' || districtInput.selectedIndex == 0) {
+            resultInput.value = 0;
+            districtInput.selectedIndex = 0;
+        } else {
+            resultInput.value = result;
+        }
+    });
+
+    districtInput.addEventListener('change', function() {
+        
+        if (countInput.value == 0 || countInput.value == '') {
+            resultInput.value = 0;
+        } else {
+            resultInput.value = result * this.options[this.selectedIndex].value;
+        }
+    });
+}
+
+module.exports = calc;
+
+/***/ }),
+
 /***/ "./js/parts/modal.js":
 /*!***************************!*\
   !*** ./js/parts/modal.js ***!
   \***************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module */
-/*! CommonJS bailout: module.exports is used directly at 20:0-14 */
 /***/ ((module) => {
 
 function modal() {
@@ -39,7 +77,6 @@ module.exports = modal;
   \****************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module */
-/*! CommonJS bailout: module.exports is used directly at 50:0-14 */
 /***/ ((module) => {
 
 function slider() {
@@ -100,39 +137,42 @@ module.exports = slider;
   !*** ./js/parts/tabs.js ***!
   \**************************/
 /*! unknown exports (runtime-defined) */
-/*! runtime requirements:  */
-/***/ (() => {
+/*! runtime requirements: module */
+/***/ ((module) => {
 
-let links = document.querySelectorAll('#links'),
-    cards = document.querySelectorAll('.card'),
-    menu = document.querySelector('.menu');
+function tabs() {  
+    let links = document.querySelectorAll('#links'),
+        cards = document.querySelectorAll('.card'),
+        menu = document.querySelector('.menu');
 
-function hideContent(a) {
-    for(let i = a; i < cards.length; i++){
-        cards[i].classList.remove('show');
-        cards[i].classList.add('hide');
-    }
-}
-
-function showContent(a) {
-    if (cards[a].classList.contains('hide')) {
-        cards[a].classList.remove('hide');
-        cards[a].classList.add('show');
-    }
-}
-
-menu.addEventListener('click', function(e) {
-    let target = e.target;
-    for (let i = 0; i < links.length; i++) {
-        if (target == links[i]) {
-            hideContent(0);
-            showContent(i);
+    function hideContent(a) {
+        for(let i = a; i < cards.length; i++){
+            cards[i].classList.remove('show');
+            cards[i].classList.add('hide');
         }
     }
-});
 
-hideContent(1);
+    function showContent(a) {
+        if (cards[a].classList.contains('hide')) {
+            cards[a].classList.remove('hide');
+            cards[a].classList.add('show');
+        }
+    }
 
+    menu.addEventListener('click', function(e) {
+        let target = e.target;
+        for (let i = 0; i < links.length; i++) {
+            if (target == links[i]) {
+                hideContent(0);
+                showContent(i);
+            }
+        }
+    });
+
+    hideContent(1);
+}
+
+module.exports = tabs;
 
 /***/ }),
 
@@ -142,7 +182,6 @@ hideContent(1);
   \***************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module */
-/*! CommonJS bailout: module.exports is used directly at 55:0-14 */
 /***/ ((module) => {
 
 function timer() {    
@@ -240,12 +279,14 @@ window.addEventListener('DOMContentLoaded', () => {
     'use strict';
 
     let tabs = __webpack_require__(/*! ./parts/tabs */ "./js/parts/tabs.js"),
+        calc = __webpack_require__(/*! ./parts/calc */ "./js/parts/calc.js"),
         slider = __webpack_require__(/*! ./parts/slider */ "./js/parts/slider.js"),
         modal = __webpack_require__(/*! ./parts/modal */ "./js/parts/modal.js"),
         timer = __webpack_require__(/*! ./parts/timer */ "./js/parts/timer.js");
 
     
-    tabs;
+    tabs();
+    calc();
     slider();
     timer();
     modal();
