@@ -177,7 +177,28 @@ h2 {
     min-width: 1200px;
     text-align: center;
 }
-.button-link {
+.more-text {
+    margin-bottom: 40px;
+}
+.popup-block-button {
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+.popup-input {
+    border-width: 0px 0px 2px 0px;
+    background-color: black;
+    border-color: white;
+    color: white;
+    font-size: 18pt;
+    width: 250px;
+    text-align: center;
+    outline: none;
+}
+.popup-loading {
+    color: white;
+    font-size: 18pt;
+}
+.popup-button {
     background-color: white;
     height: 80px; 
     min-width: 250px;
@@ -186,9 +207,10 @@ h2 {
     font-size: 22pt;
     border: 0px;
     box-shadow: 0 0 10px white;
-    margin-top: 60px;
-    margin-bottom: 60px;
     border-radius: 5px;
+}
+.popup-loading {
+    height: 50px;
 }
 .cross {
     position: absolute;

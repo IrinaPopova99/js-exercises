@@ -7,7 +7,6 @@
   \**************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module */
-/*! CommonJS bailout: module.exports is used directly at 27:0-14 */
 /***/ ((module) => {
 
 function calc() {
@@ -26,8 +25,7 @@ function calc() {
         }
     });
 
-    districtInput.addEventListener('change', function() {
-        
+    districtInput.addEventListener('change', function() {        
         if (countInput.value == 0 || countInput.value == '') {
             resultInput.value = 0;
         } else {
@@ -36,7 +34,7 @@ function calc() {
     });
 }
 
-module.exports = calc;
+module.exports = calc; 
 
 /***/ }),
 
@@ -68,6 +66,81 @@ function modal() {
 }
 
 module.exports = modal;
+
+/***/ }),
+
+/***/ "./js/parts/request.js":
+/*!*****************************!*\
+  !*** ./js/parts/request.js ***!
+  \*****************************/
+/*! unknown exports (runtime-defined) */
+/*! runtime requirements: module */
+/*! CommonJS bailout: module.exports is used directly at 63:0-14 */
+/***/ ((module) => {
+
+function requestCode() {
+    let inputCode = document.querySelector('.popup-input'),
+        button = document.querySelector('.popup-button'),
+        formPopup = document.querySelector('.popup-form'),
+        messageDiv = document.querySelector('.popup-loading'),
+        code = 'NY2021';
+
+    let message = {
+        loading: 'Подожите...',
+        success: 'Вы можете забрать свой подарок в нашем баре',
+        failure: 'Что-то пошло не так :(',
+        wrongCode: 'Такого кода не существует',
+    };
+         
+    function sendForm(elem) {
+        elem.addEventListener('submit', (event) => {
+            event.preventDefault();
+            if (inputCode.value != code) {
+                alert(message.wrongCode);
+            } else {
+                let formData = new FormData(elem);
+
+                function postData(data) {
+                    return new Promise(function(resolve, reject) {
+                        let request = new XMLHttpRequest();
+                        request.open('POST', 'server.php');
+                        request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+                        request.addEventListener('readystatechange', () => {                    
+                            if (request.readyState < 4) {
+                                resolve();
+                            } else if (request.readyState === 4 && request.status == 200) {
+                                resolve();
+                            } else {
+                                reject();
+                            }
+
+                        });
+                        request.send(data);
+                    });
+                }
+                function clearData() {
+                    inputCode.value = '';
+                }
+                postData(formData)
+                    .then(() => {messageDiv.innerHTML = message.loading})
+                    .then(() => {
+                        alert(message.success);
+                        messageDiv.innerHTML = '';
+                    })
+                    .catch(() => {
+                        alert(message.failure);
+                        messageDiv.innerHTML = '';
+                    })
+                    .finally(clearData);
+            }
+        });
+    }
+    
+    sendForm(formPopup);
+}
+
+module.exports = requestCode;
 
 /***/ }),
 
@@ -282,14 +355,15 @@ window.addEventListener('DOMContentLoaded', () => {
         calc = __webpack_require__(/*! ./parts/calc */ "./js/parts/calc.js"),
         slider = __webpack_require__(/*! ./parts/slider */ "./js/parts/slider.js"),
         modal = __webpack_require__(/*! ./parts/modal */ "./js/parts/modal.js"),
+        requestCode = __webpack_require__(/*! ./parts/request */ "./js/parts/request.js"),
         timer = __webpack_require__(/*! ./parts/timer */ "./js/parts/timer.js");
 
-    
     tabs();
     calc();
     slider();
     timer();
     modal();
+    requestCode();
 });
 })();
 
